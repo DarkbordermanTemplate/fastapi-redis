@@ -17,6 +17,7 @@ uvicorn = {extras = ["standard"], version = "==0.12.2"}
 fastapi = "==0.63.0"
 requests = "==2.25.1"
 importlib-metadata = "==1.7.0"
+redis = "==3.5.3"
 
 [requires]
 python_version = "3.7"

@@ -1,7 +1,8 @@
-# FastAPI template
-A RESTful API service template built with fastapi.
+# FastAPI-redis
+Fastapi framework template, with basic redis operations.
 
-![Integration](https://github.com/Darkborderman/fastapi-template/workflows/Integration/badge.svg)
+![Integration](https://github.com/DarkbordermanTemplate/fastapi-redis/workflows/Integration/badge.svg)
+![Build](https://github.com/DarkbordermanTemplate/fastapi-redis/workflows/Build/badge.svg)
 
 ## Development
 

@@ -3,6 +3,7 @@ from fastapi.requests import Request
 from fastapi.responses import Response
 from loguru import logger
 
+from cache import init_cache
 from config import Config
 from endpoints import RESOURCES
 
@@ -26,6 +27,7 @@ async def log_request(request: Request):
 @APP.on_event("startup")
 async def startup_event():
     logger.info("Processing startup initialization")
+    init_cache()
 
 
 # Log response status code and body

@@ -1,12 +1,19 @@
 version: '3.4'
 
 services:
-  fastapi-template:
-    container_name: fastapi-template
+  fastapi-redis:
+    container_name: fastapi-redis
     build: .
     image: fastapi-template:latest
     restart: always
+    network_mode: host
     env_file:
       - .env
     ports:
       - 8000:8000
+  redis:
+    container_name: redis
+    image: redis:latest
+    network_mode: host
+    ports:
+      - 6379:6379
