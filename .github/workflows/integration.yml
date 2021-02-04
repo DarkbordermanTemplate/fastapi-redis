@@ -1,0 +1,36 @@
+name: Integration
+
+on: push
+
+jobs:
+  integration:
+    runs-on: ubuntu-18.04
+    container: python:3.8.11-slim
+
+    services:
+      redis:
+        image: redis
+
+    steps:
+    - name: Install container dependencies
+      run: |
+        apt-get update
+        apt-get install -y make software-properties-common gnupg2 redis-tools
+        add-apt-repository -y ppa:git-core/ppa
+        apt-get install -y git
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pipenv
+        redis-cli -h redis CONFIG SET requirepass "password"
+        make init
+    - name: Run ci bundle command
+      run: |
+        make ci-bundle
+      env:
+        REDIS_HOST: redis

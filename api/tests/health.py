@@ -1,5 +1,4 @@
 import pytest
-
 from tests import AssertRequest, AssertResponse, assert_request
 
 ROUTE = "/health"

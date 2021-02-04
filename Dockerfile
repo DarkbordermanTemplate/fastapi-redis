@@ -1,4 +1,4 @@
-FROM python:3.7.7-slim
+FROM python:3.8.11-slim
 RUN pip install pipenv
 
 WORKDIR /api/

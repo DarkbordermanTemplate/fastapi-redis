@@ -1,7 +1,9 @@
-# FastAPI template
-A RESTful API service template built with fastapi.
+# FastAPI-redis
+Fastapi framework template, with basic redis operations.
 
-![Integration](https://github.com/Darkborderman/fastapi-template/workflows/Integration/badge.svg)
+![Integration](https://github.com/DarkbordermanTemplate/fastapi-redis/workflows/Integration/badge.svg)
+![Build](https://github.com/DarkbordermanTemplate/fastapi-redis/workflows/Build/badge.svg)
+![Release](https://github.com/DarkbordermanTemplate/fastapi-redis/workflows/Release/badge.svg)
 
 ## Development
 
@@ -9,7 +11,7 @@ A RESTful API service template built with fastapi.
 
 | Name | Version |
 | --- | --- |
-| Python | 3.7 |
+| Python | 3.8 |
 | pipenv(Python module) | 2018.11.26 or up |
 
 ### Environment setup
@@ -46,7 +48,7 @@ The server will run at http://127.0.0.1:8000
 This project uses `black` and `isort` for formatting
 
 ```
-make reformat
+make format
 ```
 
 ### Linting

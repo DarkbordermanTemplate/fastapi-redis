@@ -1,31 +1,27 @@
+PKG = api
+
 .PHONY: clean init
 
 init: clean
-	pipenv --python 3.7
+	pipenv --python 3.8
 	pipenv install --dev
+	pipenv run pre-commit install
 
-lint: pylint flake8
+lint:
+	pipenv run flake8 ${PKG} --max-line-length=120
+	pipenv run pylint --rcfile=setup.cfg ${PKG}/**
 
-flake8:
-	pipenv run flake8 api/ --max-line-length=120 --exclude=test,database
+analysis:
+	pipenv run bandit ${PKG}
 
-pylint:
-	pipenv run pylint --rcfile=setup.cfg api/
+format:
+	pipenv run black ${PKG}
+	pipenv run isort ${PKG}
 
-reformat: black isort
-
-black:
-	pipenv run black api/endpoints/
-	pipenv run black api/tests/
-
-isort:
-	pipenv run isort api/*.py
-	pipenv run isort api/endpoints/**/*.py
-
-ci-bundle: reformat lint test
+ci-bundle: analysis format lint test
 
 test:
-	pipenv run pytest -vv --cov-report=term-missing --cov=api/endpoints api/tests
+	pipenv run pytest -vv --cov-report=term-missing --cov=${PKG}/endpoints ${PKG}/tests
 
 clean:
 	find . -type f -name '*.py[co]' -delete
